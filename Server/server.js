@@ -14,23 +14,7 @@ app.use(express.json());
 app.get("/", (req, res) => res.send("API Working"));
 app.post("/clerk", clerkWebhooks);
 
-// Lazy DB connection for serverless
-let dbConnected = false;
-async function ensureDB() {
-  if (!dbConnected) {
-    await connectDB();
-    dbConnected = true;
-  }
-}
+await connectDB(); // normal connect for local dev
 
-// Vercel handler
-export default async function handler(req, res) {
-  await ensureDB();
-  return app(req, res);
-}
-
-// Only start a server when running locally
-if (process.env.VERCEL !== "1") {
-  const PORT = process.env.PORT || 5000;
-  app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
-}
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

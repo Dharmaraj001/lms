@@ -13,7 +13,7 @@ export const clerkWebhooks = async (req, res) => {
     const { data, type } = req.body;
 
     switch (type) {
-      case 'user.created':
+      case "user.created":
         await User.create({
           _id: data.id,
           email: data.email_addresses[0].email_address,
@@ -22,7 +22,7 @@ export const clerkWebhooks = async (req, res) => {
         });
         break;
 
-      case 'user.updated':
+      case "user.updated":
         await User.findByIdAndUpdate(data.id, {
           email: data.email_addresses[0].email_address,
           name: `${data.first_name} ${data.last_name}`,

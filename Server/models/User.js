@@ -2,11 +2,12 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
   {
-    _id: { type: String, required: true },
+    clerkId: { type: String, required: true, unique: true },
     name: { type: String, required: true },
     email: { type: String, required: true },
-    imageUrl: { type: String, required: true },
-    enrolledcourses: [
+    imageUrl: { type: String },
+    role: { type: String, default: "student" },
+    enrolledCourses: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Course",

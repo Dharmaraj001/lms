@@ -39,3 +39,23 @@
 .rich-text ul { margin-left: 30px; list-style-type: disc; }
 
 .rich-text li { margin-bottom: 8px; }
+
+/* Infinite horizontal scroll */
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.slider {
+  width: max-content;
+  animation: slide 16s linear infinite;
+}
+
+/* Pause animation on hover */
+.slider:hover {
+  animation-play-state: paused;
+}

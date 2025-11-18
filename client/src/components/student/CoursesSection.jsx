@@ -13,7 +13,7 @@ const CoursesSection = () => {
 
       <div className="relative max-w-7xl mx-auto px-8 md:px-16 text-center">
         <h2 className="text-3xl md:text-4xl font-extrabold text-gray-800 leading-tight">
-          Learn from <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600">top-notch educators</span>
+          Learn from <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400">top-notch educators</span>
         </h2>
 
         <p className="text-gray-600 mt-4 max-w-2xl mx-auto md:text-lg text-sm leading-relaxed">

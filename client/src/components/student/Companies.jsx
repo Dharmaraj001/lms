@@ -1,19 +1,38 @@
-import React from 'react'
-import { assets } from '../../assets/assets'
+import React from "react";
+import { assets } from "../../assets/assets";
 
 const Companies = () => {
-  return (
-    <div className='pt-16'>
-      <p className='text-base text-gray-500'>We provide top-notch educators from leading institutions. Like..</p>
-      <div className='flex flex-wrap items-center justify-center gap-6 md:gap-16 md:mt-10 mt-5'>
-        <img src={assets.microsoft_logo} alt="Microsoft logo" className='w-20 md:w-28'/>
-        <img src={assets.walmart_logo} alt="Wallmart logo" className='w-20 md:w-28'/>
-        <img src={assets.paypal_logo} alt="paypal_logo" className='w-20 md:w-28'/>
-        <img src={assets.adobe_logo} alt="adobe_logo" className='w-20 md:w-28'/>
-        <img src={assets.accenture_logo} alt="accenture_logo" className='w-20 md:w-28'/>
-      </div>
-    </div>
-  )
-}
+  const logos = [
+    assets.microsoft_logo,
+    assets.walmart_logo,
+    assets.paypal_logo,
+    assets.adobe_logo,
+    assets.accenture_logo,
+  ];
 
-export default Companies
+  return (
+    <section className="pt-20">
+      <p className="text-center text-lg text-gray-600 font-medium">
+        Trusted by top educators from leading tech companies
+      </p>
+
+      {/* Fixed area centered */}
+      <div className="mt-10 w-full flex justify-center">
+        <div className="relative h-[200px] w-[80%] md:w-[50%] overflow-hidden">
+          <div className="slider flex items-center gap-16 animate-slide">
+            {[...logos, ...logos].map((logo, i) => (
+              <img
+                key={i}
+                src={logo}
+                className="w-20 md:w-28 opacity-70 hover:opacity-100 hover:scale-110 transition-all duration-300"
+                alt="company logo"
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Companies;

@@ -1,33 +1,35 @@
 import React, { useState, useEffect } from "react";
 import { assets } from "../../assets/assets";
 import Searchbar from "./Searchbar";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 
-const phrases = [
-  "Think beyond limits.",
-  "Build with purpose.",
-  "Create with vision.",
-  "Innovate fearlessly."
-];
-
 const Hero = () => {
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % phrases.length);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <div className="flex flex-col items-center justify-center w-full md:pt-36 pt-20 px-7 md:px-0 space-y-7 text-center bg-gradient-to-b from-cyan-100/70">
+    <section className="flex flex-col items-center justify-center w-full md:pt-40 pt-24 px-7 md:px-4 text-center relative overflow-hidden bg-gradient-to-b from-indigo-100/20 via-sky-200/50 to-teal-100/10">
 
-      {/* Animated Heading */}
-      <h1 className="text-5xl md:text-3xl relative font-bold text-gray-800 max-w-2xl mx-auto leading-snug">
-        👋 Empowering your mind with tools, insights, and innovation to help you{" "}
-        <span className="text-blue-600 inline-block">
+      {/* Floating gradient glow elements */}
+      <motion.div
+        animate={{ opacity: [0.3, 0.6, 0.3] }}
+        transition={{ repeat: Infinity, duration: 6 }}
+        className="absolute top-10 left-10 w-40 h-40 bg-blue-300/40 blur-[100px] rounded-full -z-10"
+      />
+      <motion.div
+        animate={{ opacity: [0.3, 0.7, 0.3] }}
+        transition={{ repeat: Infinity, duration: 7 }}
+        className="absolute bottom-10 right-10 w-56 h-56 bg-cyan-300/40 blur-[120px] rounded-full -z-10"
+      />
+
+      {/* Title with animation */}
+      <motion.h1
+        initial={{ opacity: 0, y: 25 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="relative text-4xl md:text-5xl font-bold  text-gray-900 max-w-4xl leading-tight tracking-tight "
+      >
+        👋 Empower Your Mind,  
+        <br className="hidden md:block" />
+        <span className="text-blue-400 drop-shadow-sm">
           <TypeAnimation
             sequence={[
               "Think beyond limits.",
@@ -43,32 +45,44 @@ const Hero = () => {
             speed={45}
             deletionSpeed={40}
             repeat={Infinity}
-            cursor = {true}
+            cursor={true}
           />
         </span>
-
-        {/* sketch image */}
-        <img
-          src={assets.sketch}
-          alt="sketch"
-          className="md:block hidden absolute -bottom-7 right-0"
-        />
-      </h1>
+      </motion.h1>
 
       {/* Desktop paragraph */}
-      <p className="md:block hidden text-gray-500 max-w-2xl mx-auto">
-        BrainBox is your go-to place to learn new things, test your skills, and unlock
-        the creative power within you.{" "}
-        <span className="text-blue-600">Start discovering your potential today!</span>
-      </p>
+      <motion.p
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 0.8 }}
+        className="md:block hidden text-gray-600 max-w-2xl mt-4 leading-relaxed text-lg"
+      >
+        We help you explore knowledge, build skills, and unlock your creative potential.{" "}
+        <span className="font-semibold text-blue-600">
+          Let’s transform your ideas into impact.
+        </span>
+      </motion.p>
 
       {/* Mobile paragraph */}
-      <p className="md:hidden text-gray-500 max-w-sm mx-auto">
-        BrainBox blends technology, creativity, and knowledge to help you achieve excellence.
-      </p>
+      <motion.p
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 0.8 }}
+        className="md:hidden text-gray-600 max-w-sm mt-3 text-base leading-relaxed"
+      >
+        Explore. Build. Grow. Your potential starts here.
+      </motion.p>
 
-      <Searchbar />
-    </div>
+      {/* Searchbar */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.9, duration: 0.9 }}
+        className="mt-10 w-full max-w-2xl"
+      >
+        <Searchbar />
+      </motion.div>
+    </section>
   );
 };
 

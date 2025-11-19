@@ -24,7 +24,7 @@ const Companies = () => {
               <img
                 key={i}
                 src={logo}
-                className="w-20 md:w-28 opacity-70 hover:opacity-100 hover:scale-110 transition-all duration-300"
+                className="w-20 md:w-28 sm:w-14 opacity-70 hover:opacity-100 hover:scale-110 transition-all duration-300"
                 alt="company logo"
               />
             ))}
